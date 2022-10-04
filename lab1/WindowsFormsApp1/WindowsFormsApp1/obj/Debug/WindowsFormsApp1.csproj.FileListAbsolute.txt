@@ -1,0 +1,14 @@
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MathNet.Numerics.dll
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MathNet.Numerics.xml
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.SuggestedBindingRedirects.cache
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\alena\Desktop\7_sem\modeling\lab1\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
