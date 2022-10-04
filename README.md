@@ -19,3 +19,8 @@ https://github.com/fairay/Modeling-7sem
 
 3. пума (питон), есть к экзамену
 https://github.com/Winterpuma/bmstu_MR/tree/main 
+
+
+https://github.com/LyubaxaPro/modeling
+
+https://github.com/TheSawIsTheLaw/TrueModeling
