@@ -195,7 +195,7 @@ namespace src_lab1
         }
         public void buildPlots(Chart chartDistr, Chart chartDens, double GraphStep = 1000)
         {
-            int step = 1; // Convert.ToInt32((end - begin) / GraphStep);
+            int step = 1;
 
             prepareAxis(chartDistr, chartDens);
 
@@ -204,11 +204,6 @@ namespace src_lab1
                 
                 chartDistr.Series[0].Points.AddXY(x, F(x));
                 chartDens.Series[0].Points.AddXY(x, P(x));
-                //Console.Write(x);
-                //Console.Write(" ");
-                //Console.Write(F(x));
-                //Console.Write(" ");
-                //Console.WriteLine(P(x));
             }
         }
     }
