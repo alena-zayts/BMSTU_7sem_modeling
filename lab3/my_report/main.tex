@@ -1,0 +1,350 @@
+\documentclass[14pt, a4paper]{extarticle}
+
+\usepackage{my_GOST}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{array}
+\usepackage{caption}
+\hypersetup{
+	pdftex,
+	colorlinks = true,
+	linkcolor = black,
+	filecolor = magenta,
+	citecolor = green,      
+	urlcolor = cyan,
+}
+
+% к таблице и листингу подпись сверху, перед каждым иллюстративным материалом анонсировать
+% написатьт в квадратных скобках к рекурсии комментарием что это метод и понятно почему вызываем его снова
+\definecolor{mylightgray}{RGB}{240,240,240}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+	backgroundcolor=\color{mylightgray},rulecolor=\color{red},  % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+	basicstyle=\footnotesize\ttfamily,        % the size of the fonts that are used for the code
+	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=t,                    % sets the caption-position to bottom
+	commentstyle=\color{mygreen},    % comment style
+	extendedchars=false,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	firstnumber=0,                % start line enumeration with line 1000
+	frame=shadowbox,
+	%rulesepcolor=\color{green},	                   % adds a frame around the code
+	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue}\textbf,       % keyword style
+	language=C++,                 % the language of the code
+	morekeywords={*,...},            % if you want to add more keywords to the set
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                   % how far the line-numbers are from the code
+	numberstyle=\scriptsize\color{mygray}, % the style that is used for the line-numbers
+	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+	showtabs=false,                  % show tabs within strings adding particular underscores
+	stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{mymauve},     % string literal style
+	tabsize=4,	                   % sets default tabsize to 2 spaces
+	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\usepackage{YATPR}
+
+\usepackage{float}
+
+\begin{document}
+\include{title}
+
+\setcounter{page}{2}
+
+\section{Задание}
+
+Написать программу, которая генерирует псевдослучайные последовательности одноразрядных, двухразрядных и трехразрядных целых чисел алгоритмическим способом. Также программа может брать готовые псевдослучайные последовательности из файла (табличный способ).
+
+Разработать количественный критерий оценки случайности последовательности чисел. Для каждой сгенерированной или взятой последовательности вычислить и вывести значение критерия. 
+Предусмотреть возможность ввода десяти чисел и оценки их случайности с помощью критерия.
+
+
+\section{Теоретические сведения}
+
+\subsection{Способы получения случайных чисел}
+
+На практике наиболее распространены 3 способа получения случайных чисел.
+
+\textbf{Аппаратный способ}
+
+При использовании аппаратного способа случайные числа вырабатываются специальной электронной приставкой (генератором случайных чисел). Реализация данного способа не требует дополнительных вычислений, необходима только операция -- обращение к вычислительному устройству. 
+
+В качестве физического эффекта, лежащего в основе генерации случайных чисел, может использоваться, например, шум в электронных приборах.  Для генерации необходимы источник шума, ключевая схема, формирователь импульсов и пересчетная схема.
+
+%Аппаратные генераторы случайных чисел – это устройства, использующие для создания случайных чисел замеры параметров некоторых физических процессов. Как правило, аппаратный генератор случайных чисел состоит из источника энтропии и устройства, преобразующего значения, полученные с источника энтропии, в нужный формат.
+
+
+\textbf{Табличный способ}
+Случайные числа берутся из заранее подготовленной таблицы, которая находится во внешней или оперативной памяти. Числа в таблице проверены на случайность и некоррелированы.
+
+
+
+\textbf{Алгоритмический способ}
+Алгоритмический способ основан на использовании специальных алгоритмов. К таким алгоритмам, например, относятся следующие:
+
+\begin{itemize}
+	\item алгоритм Фон-Неймана (метод серединных квадратов);
+	\item метод перемешивания (сдвигов);
+	\item линейный конгруэнтный генератор;
+	\item вихрь Мерсенна.
+\end{itemize}
+
+
+\subsection{Вихрь Мерсенна для генерации псевдослучайных чисел}
+
+\textbf{}
+
+Для получения случайных чисел алгоритмическим способом выбран линейный конгруэнтный метод.
+
+\textbf{Линейный конгруэнтный метод}
+
+Для осуществления генерации чисел данным методом, необходимо задать 4 числа:
+
+
+m > 0,  модуль
+
+%0 \leq a \leq m, множитель
+
+%0 \leq c \leq m, приращение
+
+%0 \leq $ X_{0}$ \leq m, начальное число
+
+
+Последовательность случайных чисел генерируется при помощи формулы:
+
+\begin{equation}
+	%X_{n + 1} = (a*X_{n} + c) \mod m, при n \geq 0
+\end{equation}
+
+При некоторых наборах чисел m, a, c, и $X_{0}$ последовательность не может быть "случайной". Поэтому важно правильно их подобрать. В конгруэнтной последовательности всегда существуют циклы - периоды, необходимо чтобы последовательность, которую мы используем, имела относительно длинный период.
+
+Выбранный критерий оценки случайной последовательности - критерий "хи-квадрат". Это один из самых известных статистических критериев, также это основной метод, используемый в сочетании с другими критериями. 
+
+С помощью этого критерия можно узнать, удовлетворяет ли генератор случайных чисел требованию равномерного распределения или нет. 
+Для оценки по этому критерию необходимо вычислить статистику V по формуле:
+
+\begin{equation}
+	V = \frac{1}{n} \sum_{s = 1}^k (\frac{Y_{s}^2}{p_{s}}) - n
+\end{equation}
+
+где n – количество независимых испытаний, k – количество категорий, $Y_{s}$ — число наблюдений, которые действительно относятся к категории S, $p_{s}$ — вероятность того, что каждое наблюдение относится к категории s.  
+
+Значение V является значением критерия «хи-квадрат» для экспериментальных данных. Приемлемое значение этого критерия можно определить по таблице 1. Для этого используем строку с v = k-1, где k = 10, 90, 900 для задания лабораторной.  P в этой таблице — это вероятность того, что экспериментальное значение Vэксп. будет меньше табулированного (теоретического) Vтеор. или равно ему. Ее также можно рассматривать как доверительную вероятность.
+
+Если вычисленное V окажется меньше 1\% точки или больше 99\% точки, можно сделать вывод, что эти числа недостаточно случайные. Если V лежит между 1\% и 5\% точками или между 95\% и 99\% точками, то эти числа «подозрительны». Если V лежит между 5\% и 10\% точками или 90\%-95\% точками, то числа можно считать «почти подозрительными». Проверка по "хи-квадрат" критерию часто производится три раза и более с разными данными. Если по крайней мере два из трех результатов оказываются подозрительными, то числа рассматриваются как недостаточно случайные.
+
+%\begin{figure}[H]
+%	\center{\includegraphics[scale=0.5]{pictures/table.png}}
+%	\caption{Некоторые процентные точки "хи-квадрат" распределения (Источник: Кнут Д. Э. «Искусство программирования» ).}
+%	\label{fig:table}
+%\end{figure}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{ | c | c | c | c | c | c | c | c |}
+		\hline
+		k - 1 & p = 1\% & p = 5\% & p = 25\% & p = 50\% & p = 75\% & p = 95\% & p = 99\% \\ \hline
+		9 & 2.088 & 3.325 & 5.899 & 8.343 & 11.39 & 16.92 & 21.67 \\ \hline
+		89 & 60.93 & 68.25 & 79.68 & 88.33 & 97.60 & 112.02 & 122.94 \\ \hline
+		899 & 803.31 & 830.41 & 870.05 & 898.33 & 927.23 & 969.86 & 1000.57 \\ \hline
+	\end{tabular}
+	\caption{Таблица значений Vтеор для количества степеней свободы по заданию}
+\end{table}
+
+
+
+
+\section{Результаты работы программы}
+%Условием стабилизации вероятности состояния $i$ принимается величина $P_i(t_{stab})$, где $t_{stab}$ - наименьшее время, при котором ${P'}_i(t_{stab}) < 10^{-7}$. 
+
+В начале работы система находится в первом состоянии, $\varepsilon$ для определения стабилизации вероятности принимается равным $10^{-5}$.
+
+
+
+\newpage
+На рисунке \ref{pic:1} приведен пример работы программы для 3 состояний.
+\begin{figure}[h]
+	\begin{center}
+		{\includegraphics[scale=0.45]{pictures/1.png}
+			\caption{Пример работы программы для 3 состояний}
+			\label{pic:1}}
+	\end{center}
+\end{figure}
+
+Проверим результаты, приведенные на рисунке выше. Составим систему линейных уравнений для определения вероятностей в стационарном режиме: составим уравнения Колмогорова и приравняем левые части к 0, а также добавим условие нормировки.
+\begin{equation}
+	\left\{\begin{array}{l}
+		0 = 0.1 \cdot P_2 - 0.1 \cdot P_1 - 0.1 \cdot P_1 \\
+		0 = 0.1 \cdot P_1 + 0.3 \cdot P_3 - 0.1 \cdot P2 \\
+		0 = 0.1 \cdot P_1 - 0.3 \cdot P_3 \\
+		P_1 + P_2 + P_3 = 1
+	\end{array}\right.
+\end{equation}
+
+\begin{equation}
+	\left\{\begin{array}{l}
+		P_1 = \frac{3}{10} \\
+		P_2 = 2 \cdot P_1 = \frac{6}{10} \\
+		P_3 = \frac{1}{3} \cdot P_1 = \frac{1}{10} \\
+	\end{array}\right.
+\end{equation}
+
+Вычисленные значения совпадают с результатами программы.
+
+
+
+\newpage
+На рисунке \ref{pic:2} вероятность перехода из второго состояния в любое другое равна 0, поэтому в стабилизировавшемся режиме вероятность этого состояния примерно равна 1, а остальных -- 0.
+\begin{figure}[h]
+	\begin{center}
+		{\includegraphics[scale=0.45]{pictures/2.png}
+			\caption{Пример работы программы для 4 состояний}
+			\label{pic:2}}
+	\end{center}
+\end{figure}
+
+
+\newpage
+На рисунке \ref{pic:3} из первого состояния есть вероятность перейти в другие, но вероятность попасть из любого состояния в первое равна 0, поэтому и в стабилизировавшемся режиме вероятность первого состояния равна 0.
+\begin{figure}[h]
+	\begin{center}
+		{\includegraphics[scale=0.45]{pictures/3.png}
+			\caption{Пример работы программы для 5 состояний}
+			\label{pic:3}}
+	\end{center}
+\end{figure}
+
+\newpage
+На рисунке \ref{pic:4} приведен пример работы программы для 10 состояний.
+\begin{figure}[h]
+	\begin{center}
+		{\includegraphics[scale=0.45]{pictures/4.png}
+			\caption{Пример работы программы для 10 состояний}
+			\label{pic:4}}
+	\end{center}
+\end{figure}
+
+
+
+\section{Код программы}
+
+Класс EmulationModel, используемый для расчетов и построения графиков, приведен в листинге \ref{lst:list1} (используемый язык -- C\#).
+
+\begin{lstlisting}[caption = {Класс EmulationModel, используемый для расчетов и построения графиков}, label=lst:list1]
+    class EmulationModel
+{
+	public int NStates;
+	public double[,] mtr;
+	public double[] pArr;
+	public double[] tStableArr;
+	public Chart currentChart;
+	readonly double step = 0.01;
+	readonly double stabEpsilon = 1e-5;
+	readonly double zeroEpsilon = 1e-8;
+	
+	public EmulationModel(int nStates, ref Chart chart)
+	{
+		NStates = nStates; 
+		pArr = new double[NStates];
+		tStableArr = new double[NStates];
+		mtr = new double[NStates, NStates];
+		currentChart = chart;
+		_initParray();
+	}
+	
+	public void Emulate()
+	{
+		_initSeries();
+		double[] deltaProbArray = new double[NStates];
+		deltaProbArray[0] = 2 * stabEpsilon;
+		
+		for (double currentT = step; !_checkModelStabelized(deltaProbArray); currentT += step)
+		{
+			_drawArrayOnCurrentT(currentT, pArr);
+			
+			deltaProbArray = new double[NStates];
+			double[] PderivativeArr = new double[NStates];
+			
+			for (int i = 0; i < NStates; i++)
+			{
+				for (int j = 0; j < NStates; j++)
+				{
+					double probDensityToAdd = mtr[j, i] * pArr[j] - mtr[i, j] * pArr[i];
+					PderivativeArr[i] += probDensityToAdd;
+					deltaProbArray[i] += probDensityToAdd * step;
+				}
+				pArr[i] += deltaProbArray[i];
+			}
+			
+			_checkSomeStatesStabelized(currentT, PderivativeArr);
+		}
+		_drawStabelizedParr();
+	}
+	
+	private void _initParray()
+	{
+		pArr[0] = 1;
+		for (int i = 1; i < NStates; i++)
+		pArr[i] = 0;
+	}
+	
+	private void _initSeries()
+	{
+		currentChart.Series.Clear();
+		for (int i = 0; i < NStates; i++)
+		{
+			currentChart.Series.Add((i + 1).ToString());
+			currentChart.Series[i].ChartType = SeriesChartType.Line;
+			currentChart.Series[i].BorderWidth = 3;
+		}
+		
+		currentChart.Series.Add("Стабилизация");
+		currentChart.Series[NStates].ChartType = SeriesChartType.Point;
+		currentChart.Series[NStates].Color = Color.Red;
+	}
+	
+	private bool _checkModelStabelized(double[] arr)
+	{
+		for (int i = 0; i < arr.Length; i++)
+		if (arr[i] > zeroEpsilon)
+		return false;
+		return true;
+	}
+	
+	private void _checkSomeStatesStabelized(double currentT, double[] klmArr)
+	{
+		for (int i = 0; i < NStates; i++)
+		{
+			if (Math.Abs(klmArr[i]) < stabEpsilon && tStableArr[i] == 0)
+			tStableArr[i] = currentT;
+			
+			else if (Math.Abs(klmArr[i]) > stabEpsilon && tStableArr[i] != 0)
+			tStableArr[i] = 0;
+		}
+	}
+	
+	private void _drawArrayOnCurrentT(double currentT, double[] arr)
+	{
+		for (int i = 0; i < NStates; i++)
+		{
+			currentChart.Series[i].Points.AddXY(currentT, arr[i]);
+		}
+	}
+	
+	private void _drawStabelizedParr()
+	{
+		for (int i = 0; i < NStates; i++)
+		{
+			currentChart.Series[NStates].Points.AddXY(tStableArr[i], pArr[i]);
+		}
+	}
+}
+\end{lstlisting}
+
+\end{document}

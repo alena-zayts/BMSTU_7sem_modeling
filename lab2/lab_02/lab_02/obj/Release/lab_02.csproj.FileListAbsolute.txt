@@ -1,0 +1,11 @@
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\bin\Release\lab_02.exe.config
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\bin\Release\lab_02.exe
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\bin\Release\lab_02.pdb
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\obj\Release\lab_02.csproj.AssemblyReference.cache
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\obj\Release\lab_02.csproj.SuggestedBindingRedirects.cache
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\obj\Release\lab_02.Form1.resources
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\obj\Release\lab_02.Properties.Resources.resources
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\obj\Release\lab_02.csproj.GenerateResource.cache
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\obj\Release\lab_02.csproj.CoreCompileInputs.cache
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\obj\Release\lab_02.exe
+C:\Users\alena\Desktop\7_sem\modeling\lab2\lab_02\lab_02\obj\Release\lab_02.pdb
