@@ -21,6 +21,7 @@ https://github.com/fairay/Modeling-7sem
 https://github.com/Winterpuma/bmstu_MR/tree/main 
 
 
-https://github.com/LyubaxaPro/modeling
+https://github.com/LyubaxaPro/modeling  -- питон
 
-https://github.com/TheSawIsTheLaw/TrueModeling
+https://github.com/TheSawIsTheLaw/TrueModeling с
+
