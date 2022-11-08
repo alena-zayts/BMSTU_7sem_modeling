@@ -50,6 +50,8 @@
 }
 \usepackage{YATPR}
 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
 \usepackage{float}
 
 \begin{document}
@@ -96,136 +98,108 @@
 \end{itemize}
 
 
+
+\subsection{Критерий оценки случайности последовательности}
+
+Для количественного отображения того, насколько <<случайной>> является последовательность, было решено рассматривать разницы значений соседних элементов последовательности. 
+
+Пусть дана последовательность $X$ из $n$ целых чисел из некоторого интервала $[x_{min}; x_{max}]$:
+\begin{equation}
+	\begin{gathered}
+		x = \left(x_1, ..., x_n\right), \quad \text{где} \\
+		x_{min} \leq x_i \leq x_{max}, \forall i \in \{1, ..., n\}.
+	\end{gathered}
+\end{equation}
+
+По ним вычисляется последовательность $D$ разностей соседних элементов:
+\begin{equation}
+	\begin{gathered}
+	D = \left(d_1, ..., d_k\right), \quad \text{где} \\
+	k = \frac{n}{2},\\
+	d_i = x_{2i + 1} - x_{2i} \in \{x_{min} - x_{max} + 1, ..., x_{max} - x_{min}\} \quad \forall i \in \{1, ... k\}.
+	\end{gathered}
+\end{equation}
+
+Всевозможные разности соседних элементов -- последовательность целых чисел:
+\begin{equation}
+	\begin{gathered}
+		DP = \left(x_{min} - x_{max} + 1, x_{min} - x_{max} + 2, ..., x_{max} - x_{min}\right), \\
+		\lvert DP \lvert = 2\left(x_{max} - x_{min}\right) - 1.
+	\end{gathered}
+\end{equation}
+
+Вероятность $p_i$ того, что разность элементов равна определенному числу $dp_i \in DP$, можно вычислить по следующей формуле:
+
+\begin{equation}
+	\begin{gathered}
+		p_i = P\left(\text{dif} = dp_i\right) = \frac{x_{max} - x_{min} - \lvert dp_i \lvert}{(x_{max} - x_{min})^2}
+	\end{gathered}
+\end{equation}
+
+Тогда, подсчитав для каждой теоретически возможной разности $dp_i \in DP$ количество ее вхождений $y_i$ в полученную последовательность $D$, можно применить критерий $\chi^2$. 
+
+Для этого необходимо вычислить статистику V по формуле:
+\begin{equation}
+	V = \frac{1}{k} \sum_{i = 1}^{\lvert DP \lvert} \frac{y_{i}^2}{p_i} - k.
+\end{equation}
+ 
+Затем с помощью этого количественного критерия V дается качественная оценка <<случайности>> последовательности: с помощью таблицы процентных точек распределения $\chi^2$ с количеством степеней свободы $v=x_{max} - x_{min}$, определяется, между какими точками находится вычисленное значение V. Если оно оказывается между 5\% и 05\% точками, то делается вывод, что числа исходной последовательности $X$ -- случайные; если оно оказывается левее 1\% точки или правее 99\% точки, то последовательность $X$ признается не случайной; в ином случае последовательность $X$ объявляется <<подозрительной>>.
+
+
 \subsection{Вихрь Мерсенна для генерации псевдослучайных чисел}
 
-\textbf{}
+Для получения случайных чисел алгоритмическим способом выбран вихрь Мерсенна.
 
-Для получения случайных чисел алгоритмическим способом выбран линейный конгруэнтный метод.
+Существуют по меньшей мере два общих варианта алгоритма, различающихся только величиной используемого простого числа Мерсенна, наиболее распространённым является алгоритм MT19937, который и будет использован в данной работе.
 
-\textbf{Линейный конгруэнтный метод}
+Алгоритм работы вихря Мерсенна состоит из двух частей: рекурсивной и закалки. Рекурсивная часть представляет собой регистр сдвига с линейной обратной связью, в котором все биты слова определяются рекурсивно.
 
-Для осуществления генерации чисел данным методом, необходимо задать 4 числа:
+Регистр сдвига состоит из 624 элементов, и, в общей сложности, из 19937 клеток. Каждый элемент имеет длину 32 бита за исключением первого элемента, который имеет только 1 бит за счет отбрасывания бита. Процесс генерации начинается с логического умножения на битовую маску, отбрасывающей 31 бита (кроме наиболее значащих). Следующим шагом выполняется инициализация (x0, x1,…, x623) любыми беззнаковыми 32-разрядными целыми числами. Следующие шаги включают в себя объединение и переходные состояния.
 
-
-m > 0,  модуль
-
-%0 \leq a \leq m, множитель
-
-%0 \leq c \leq m, приращение
-
-%0 \leq $ X_{0}$ \leq m, начальное число
-
-
-Последовательность случайных чисел генерируется при помощи формулы:
-
-\begin{equation}
-	%X_{n + 1} = (a*X_{n} + c) \mod m, при n \geq 0
-\end{equation}
-
-При некоторых наборах чисел m, a, c, и $X_{0}$ последовательность не может быть "случайной". Поэтому важно правильно их подобрать. В конгруэнтной последовательности всегда существуют циклы - периоды, необходимо чтобы последовательность, которую мы используем, имела относительно длинный период.
-
-Выбранный критерий оценки случайной последовательности - критерий "хи-квадрат". Это один из самых известных статистических критериев, также это основной метод, используемый в сочетании с другими критериями. 
-
-С помощью этого критерия можно узнать, удовлетворяет ли генератор случайных чисел требованию равномерного распределения или нет. 
-Для оценки по этому критерию необходимо вычислить статистику V по формуле:
-
-\begin{equation}
-	V = \frac{1}{n} \sum_{s = 1}^k (\frac{Y_{s}^2}{p_{s}}) - n
-\end{equation}
-
-где n – количество независимых испытаний, k – количество категорий, $Y_{s}$ — число наблюдений, которые действительно относятся к категории S, $p_{s}$ — вероятность того, что каждое наблюдение относится к категории s.  
-
-Значение V является значением критерия «хи-квадрат» для экспериментальных данных. Приемлемое значение этого критерия можно определить по таблице 1. Для этого используем строку с v = k-1, где k = 10, 90, 900 для задания лабораторной.  P в этой таблице — это вероятность того, что экспериментальное значение Vэксп. будет меньше табулированного (теоретического) Vтеор. или равно ему. Ее также можно рассматривать как доверительную вероятность.
-
-Если вычисленное V окажется меньше 1\% точки или больше 99\% точки, можно сделать вывод, что эти числа недостаточно случайные. Если V лежит между 1\% и 5\% точками или между 95\% и 99\% точками, то эти числа «подозрительны». Если V лежит между 5\% и 10\% точками или 90\%-95\% точками, то числа можно считать «почти подозрительными». Проверка по "хи-квадрат" критерию часто производится три раза и более с разными данными. Если по крайней мере два из трех результатов оказываются подозрительными, то числа рассматриваются как недостаточно случайные.
-
-%\begin{figure}[H]
-%	\center{\includegraphics[scale=0.5]{pictures/table.png}}
-%	\caption{Некоторые процентные точки "хи-квадрат" распределения (Источник: Кнут Д. Э. «Искусство программирования» ).}
-%	\label{fig:table}
-%\end{figure}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{ | c | c | c | c | c | c | c | c |}
-		\hline
-		k - 1 & p = 1\% & p = 5\% & p = 25\% & p = 50\% & p = 75\% & p = 95\% & p = 99\% \\ \hline
-		9 & 2.088 & 3.325 & 5.899 & 8.343 & 11.39 & 16.92 & 21.67 \\ \hline
-		89 & 60.93 & 68.25 & 79.68 & 88.33 & 97.60 & 112.02 & 122.94 \\ \hline
-		899 & 803.31 & 830.41 & 870.05 & 898.33 & 927.23 & 969.86 & 1000.57 \\ \hline
-	\end{tabular}
-	\caption{Таблица значений Vтеор для количества степеней свободы по заданию}
-\end{table}
+Параметры MT19937 были тщательно подобраны: n и r выбраны так, что характеристический многочлен примитивный (nw — r равно числу Мерсенна 19937), параметры закалки выбраны так, что мы можем получить хорошее равномерное распределение; значение последней строки матрицы выбирается случайным образом.
 
 
 
 
 \section{Результаты работы программы}
-%Условием стабилизации вероятности состояния $i$ принимается величина $P_i(t_{stab})$, где $t_{stab}$ - наименьшее время, при котором ${P'}_i(t_{stab}) < 10^{-7}$. 
 
-В начале работы система находится в первом состоянии, $\varepsilon$ для определения стабилизации вероятности принимается равным $10^{-5}$.
-
+В программе табличным и алгоритмическим (вихрем Мерсенна) методами генерируются последовательности из 100000 псевдослучайных одно-, двух- и трехразрядных чисел. Затем каждая последовательность оценивается с помощью количественного критерия <<случайности>>, по которому затем дается качественная оценка. Результаты выводятся в таблицах, пример приведен на рисунках \ref{pic:1} и \ref{pic:2}
 
 
 \newpage
-На рисунке \ref{pic:1} приведен пример работы программы для 3 состояний.
 \begin{figure}[h]
 	\begin{center}
-		{\includegraphics[scale=0.45]{pictures/1.png}
-			\caption{Пример работы программы для 3 состояний}
+		{\includegraphics[scale=0.45]{pictures/res_table.png}
+			\caption{Результаты расчетов по табличному методу}
 			\label{pic:1}}
 	\end{center}
 \end{figure}
 
-Проверим результаты, приведенные на рисунке выше. Составим систему линейных уравнений для определения вероятностей в стационарном режиме: составим уравнения Колмогорова и приравняем левые части к 0, а также добавим условие нормировки.
-\begin{equation}
-	\left\{\begin{array}{l}
-		0 = 0.1 \cdot P_2 - 0.1 \cdot P_1 - 0.1 \cdot P_1 \\
-		0 = 0.1 \cdot P_1 + 0.3 \cdot P_3 - 0.1 \cdot P2 \\
-		0 = 0.1 \cdot P_1 - 0.3 \cdot P_3 \\
-		P_1 + P_2 + P_3 = 1
-	\end{array}\right.
-\end{equation}
-
-\begin{equation}
-	\left\{\begin{array}{l}
-		P_1 = \frac{3}{10} \\
-		P_2 = 2 \cdot P_1 = \frac{6}{10} \\
-		P_3 = \frac{1}{3} \cdot P_1 = \frac{1}{10} \\
-	\end{array}\right.
-\end{equation}
-
-Вычисленные значения совпадают с результатами программы.
-
-
-
-\newpage
-На рисунке \ref{pic:2} вероятность перехода из второго состояния в любое другое равна 0, поэтому в стабилизировавшемся режиме вероятность этого состояния примерно равна 1, а остальных -- 0.
 \begin{figure}[h]
 	\begin{center}
-		{\includegraphics[scale=0.45]{pictures/2.png}
-			\caption{Пример работы программы для 4 состояний}
+		{\includegraphics[scale=0.45]{pictures/res_alg.png}
+			\caption{Результаты расчетов по алгоритмическому методу}
 			\label{pic:2}}
 	\end{center}
 \end{figure}
 
-
 \newpage
-На рисунке \ref{pic:3} из первого состояния есть вероятность перейти в другие, но вероятность попасть из любого состояния в первое равна 0, поэтому и в стабилизировавшемся режиме вероятность первого состояния равна 0.
+Затем критерий <<случайности>> тестируется на предельных значениях: когда последовательность монотонно возрастает или убывает, состоит из периодечски повторяющихся элементов. Результаты приведены на рисунке \ref{pic:3}
 \begin{figure}[h]
 	\begin{center}
-		{\includegraphics[scale=0.45]{pictures/3.png}
-			\caption{Пример работы программы для 5 состояний}
+		{\includegraphics[scale=0.45]{pictures/res_limit.png}
+			\caption{Результаты проверки критерия <<случайности>> на предельных значениях}
 			\label{pic:3}}
 	\end{center}
 \end{figure}
 
+
 \newpage
-На рисунке \ref{pic:4} приведен пример работы программы для 10 состояний.
+Наконец, пользователю предлагается ввести собственную последовательность чисел определенной разрядности для проверки ее случайности. Пример работы приведен на рисунке \ref{pic:4}
 \begin{figure}[h]
 	\begin{center}
-		{\includegraphics[scale=0.45]{pictures/4.png}
-			\caption{Пример работы программы для 10 состояний}
+		{\includegraphics[scale=0.45]{pictures/res_user.png}
+			\caption{Пример обработки пользовательской последовательности}
 			\label{pic:4}}
 	\end{center}
 \end{figure}
@@ -233,118 +207,235 @@ m > 0,  модуль
 
 
 \section{Код программы}
+Код основной программы, котрая инициирует генерацию последовательностей, рассчитывает критерии и выводит результаты, приведен в листинге \ref{lst:list1} (используемый язык -- Python).
 
-Класс EmulationModel, используемый для расчетов и построения графиков, приведен в листинге \ref{lst:list1} (используемый язык -- C\#).
+\begin{lstlisting}[caption = {Код основной программы}, label=lst:list1]
+from prettytable import PrettyTable
+from RandomClass import Random
+from math import sqrt
 
-\begin{lstlisting}[caption = {Класс EmulationModel, используемый для расчетов и построения графиков}, label=lst:list1]
-    class EmulationModel
-{
-	public int NStates;
-	public double[,] mtr;
-	public double[] pArr;
-	public double[] tStableArr;
-	public Chart currentChart;
-	readonly double step = 0.01;
-	readonly double stabEpsilon = 1e-5;
-	readonly double zeroEpsilon = 1e-8;
-	
-	public EmulationModel(int nStates, ref Chart chart)
-	{
-		NStates = nStates; 
-		pArr = new double[NStates];
-		tStableArr = new double[NStates];
-		mtr = new double[NStates, NStates];
-		currentChart = chart;
-		_initParray();
-	}
-	
-	public void Emulate()
-	{
-		_initSeries();
-		double[] deltaProbArray = new double[NStates];
-		deltaProbArray[0] = 2 * stabEpsilon;
-		
-		for (double currentT = step; !_checkModelStabelized(deltaProbArray); currentT += step)
-		{
-			_drawArrayOnCurrentT(currentT, pArr);
-			
-			deltaProbArray = new double[NStates];
-			double[] PderivativeArr = new double[NStates];
-			
-			for (int i = 0; i < NStates; i++)
-			{
-				for (int j = 0; j < NStates; j++)
-				{
-					double probDensityToAdd = mtr[j, i] * pArr[j] - mtr[i, j] * pArr[i];
-					PderivativeArr[i] += probDensityToAdd;
-					deltaProbArray[i] += probDensityToAdd * step;
-				}
-				pArr[i] += deltaProbArray[i];
-			}
-			
-			_checkSomeStatesStabelized(currentT, PderivativeArr);
-		}
-		_drawStabelizedParr();
-	}
-	
-	private void _initParray()
-	{
-		pArr[0] = 1;
-		for (int i = 1; i < NStates; i++)
-		pArr[i] = 0;
-	}
-	
-	private void _initSeries()
-	{
-		currentChart.Series.Clear();
-		for (int i = 0; i < NStates; i++)
-		{
-			currentChart.Series.Add((i + 1).ToString());
-			currentChart.Series[i].ChartType = SeriesChartType.Line;
-			currentChart.Series[i].BorderWidth = 3;
-		}
-		
-		currentChart.Series.Add("Стабилизация");
-		currentChart.Series[NStates].ChartType = SeriesChartType.Point;
-		currentChart.Series[NStates].Color = Color.Red;
-	}
-	
-	private bool _checkModelStabelized(double[] arr)
-	{
-		for (int i = 0; i < arr.Length; i++)
-		if (arr[i] > zeroEpsilon)
-		return false;
-		return true;
-	}
-	
-	private void _checkSomeStatesStabelized(double currentT, double[] klmArr)
-	{
-		for (int i = 0; i < NStates; i++)
-		{
-			if (Math.Abs(klmArr[i]) < stabEpsilon && tStableArr[i] == 0)
-			tStableArr[i] = currentT;
-			
-			else if (Math.Abs(klmArr[i]) > stabEpsilon && tStableArr[i] != 0)
-			tStableArr[i] = 0;
-		}
-	}
-	
-	private void _drawArrayOnCurrentT(double currentT, double[] arr)
-	{
-		for (int i = 0; i < NStates; i++)
-		{
-			currentChart.Series[i].Points.AddXY(currentT, arr[i]);
-		}
-	}
-	
-	private void _drawStabelizedParr()
-	{
-		for (int i = 0; i < NStates; i++)
-		{
-			currentChart.Series[NStates].Points.AddXY(tStableArr[i], pArr[i]);
-		}
-	}
+N_RANDOMS = 100000
+eps = 1e-6
+N_OUTPUT = 10
+
+numbers_limits = {1: [0, 10], 2: [10, 99], 3: [100, 999]}
+
+
+def hi2_quantiles_for_v(v, ps=(1, 5, 10, 90, 95, 99)):
+	return {xp: v + (sqrt(2 * v) * xp) + (2 * (xp ** 2) / 3) - (2 / 3) for xp in ps}
+
+
+hi2_quantiles = {
+	# 1 цифра -> возможные числа [0; 9] -> возможно 19 разниц [-9; 9] (10 чисел)
+	1: {1: 2.088, 5: 3.325, 10: 4.158, 90: 14.684, 95: 16.919, 99: 21.666},
+	# 2 цифры ->возможные числа [10; 99] -> возможно 179 разниц [-89; 89] (90 чисел)
+	2: hi2_quantiles_for_v(89),
+	# 3 цифры ->возможные числа [100; 999] -> возможно 1799 разниц [-899; 899] (900 чисел)
+	3: hi2_quantiles_for_v(899),
 }
+
+def random_from_table():
+	with open('random_ints.txt') as file:
+		lines = file.readlines()
+
+	numbers = list()
+	for line in lines:
+		numbers.extend(list(map(int, line.strip().split())))
+	numbers = numbers[:N_RANDOMS]
+	
+	one = [number % 10 for number in numbers]
+	two = [10 + number % 90 for number in numbers]
+	three = [100 + number % 900 for number in numbers]
+	
+	return one, two, three
+
+
+def random_from_alg():
+	random = Random(2)
+	one = [random.randint(*numbers_limits[1]) for _ in range(N_RANDOMS)]
+	two = [random.randint(*numbers_limits[2]) for _ in range(N_RANDOMS)]
+	three = [random.randint(*numbers_limits[3]) for _ in range(N_RANDOMS)]
+	return one, two, three
+
+
+def calc_coef(random_numbers, start_random, end_random):
+	if start_random != 0:
+		end_random += 1
+	min_dif = start_random - end_random + 1
+	max_dif = end_random - start_random - 1
+	
+	possible_differences = list(range(min_dif, max_dif + 1))
+	probabilities_of_differences = {
+		difference: (end_random - start_random - abs(difference)) / ((end_random - start_random) ** 2)
+		for difference in possible_differences
+	}
+	
+	n_differences = len(random_numbers) // 2
+	differences = [random_numbers[2 * i + 1] - random_numbers[2 * i] for i in range(n_differences)]
+	differences_counts = {difference: differences.count(difference) for difference in possible_differences}
+	
+	if sum(differences_counts.values()) != len(differences) or \
+	abs(sum(probabilities_of_differences.values()) - 1) > eps:
+		print(sum(differences_counts.values()))
+		print(sum(probabilities_of_differences.values()))
+		raise ValueError
+	
+	V = 0
+	for difference in differences_counts.keys():
+		V += (differences_counts[difference] ** 2) / probabilities_of_differences[difference]
+	V = (V / n_differences) - n_differences
+	return V
+
+
+def analyze_coef(counted_coef, digits_amount):
+	if counted_coef < hi2_quantiles[digits_amount][1] or counted_coef > hi2_quantiles[digits_amount][99]:
+		return "Числа не случайные"
+	elif hi2_quantiles[digits_amount][5] < counted_coef < hi2_quantiles[digits_amount][95]:
+		return "Числа случайные"
+	else:
+		return "Числа подозрительные"
+
+
+def check_limit_values():
+	tests = [
+	[1, list(range(10))],
+	[1, list(range(9, -1, -1))],
+	[1, [1, 3, 1, 3, 1, 3, 1, 3, 1, 3]],
+	[3, list(range(100, 1000))],
+	]
+	print('\n\n\nТестирование на предельных значениях')
+	for digits, arr in tests:
+		print()
+		print(f'Разрядность: {digits}')
+		print(f'Последовательность: {arr[:min(len(arr), N_OUTPUT)]}')
+		coef = calc_coef(arr, *numbers_limits[digits])
+		print(f'Мера случайности: {coef}')
+		print(f'Итог: {analyze_coef(coef, digits)}')
+
+
+def main():
+	indexes = [i for i in range(N_OUTPUT)]
+	
+	for alg, alg_name in [[random_from_table, 'Табличный метод'], [random_from_alg, 'Алгоритмический метод']]:
+		res_table = PrettyTable()
+		one, two, three = alg()
+		res_table.add_column("№", indexes + ['Мера случайности', 'Итог'])
+		
+		one_coef = calc_coef(one, *numbers_limits[1])
+		two_coef = calc_coef(two, *numbers_limits[2])
+		three_coef = calc_coef(three, *numbers_limits[3])
+		res_table.add_column('1 разряд', one[:N_OUTPUT] + [one_coef, analyze_coef(one_coef, 1)])
+		res_table.add_column('2 разряда', two[:N_OUTPUT] + [two_coef, analyze_coef(two_coef, 2)])
+		res_table.add_column('3 разряда', three[:N_OUTPUT] + [three_coef, analyze_coef(three_coef, 3)])
+		
+		print(f"\t\t\t{alg_name}")
+		print(res_table)
+	
+	check_limit_values()
+	
+	print("\n\n\n")
+	digits = int(input("Разрядность вводимой последовательности (1, 2 или 3).\n"))
+	print("Введите последовательность чисел через пробел")
+	arr = list(map(int, input().split()))
+	coef = calc_coef(arr, *numbers_limits[digits])
+	print("Коэффициент: ", coef)
+	print(analyze_coef(coef, digits))
+
+
+if __name__ == '__main__':
+	main()
+
+\end{lstlisting}
+
+
+Класс Random, реализующий алгоритм вихря Мерсенна, приведен в листинге \ref{lst:list2}.
+
+\begin{lstlisting}[caption = {Класс Random, реализующий алгоритм вихря Мерсенна}, label=lst:list2]
+
+# MT19937, 32-битный генератор MT
+class Random():
+	def __init__(self, c_seed=0):
+		# Параметры n и r выбраны так, что характеристический многочлен примитивный или
+		# (nw — r) (число клеток в регистре сдвига, пространство состояний) равна числу Мерсенна 19937
+		self.w = 32  # размер слова -- 32 бит
+		self.n = 624  # число элементов в регистре сдвига
+		self.r = 31  # количество младших бит
+		self.m = 397
+		
+		# Параметры закалки подобраны так, что мы можем получить хорошее равномерное распределение.
+		self.l = 18
+		self.s = 7
+		self.t = 15
+		self.u = 11
+		self.a = 0x9908B0DF
+		self.b = 0x9D2C5680
+		self.c = 0xEFC60000
+		
+		self.f = 1812433253
+		
+		# Массив для хранения состояний генератора
+		self.MT = [0 for _ in range(self.n)]
+		self.lower_mask = 0x7FFFFFFF  # битовая маска младших r бит,
+		self.upper_mask = 0x80000000  # битовая маска старших w-r бит
+		
+		# Инициализация
+		self.index = self.n + 1
+		self.seed(c_seed)
+	
+	def seed(self, num):
+		"""
+		Начальное заполнение матрицы состояний
+		"""
+		self.MT[0] = num
+		for i in range(1, self.n):
+			temp = self.f * (self.MT[i-1] ^ (self.MT[i-1] >> (self.w-2))) + i
+			self.MT[i] = temp & 0xffffffff
+	
+	def twist(self):
+		"""
+		Генерация следующих n значений из последовательности x_i
+		"""
+		for i in range(self.n):
+			# Шаг 2. Вычисление (xiu | xi+1l)
+			x = (self.MT[i] & self.upper_mask) + \
+			(self.MT[(i+1) % self.n] & self.lower_mask)
+			# Шаг 3. Вычисление значения следующего элемента последовательности по
+			# рекуррентному выражению
+			xA = x >> 1
+			if (x % 2) != 0:
+				xA = xA ^ self.a
+			self.MT[i] = self.MT[(i + self.m) % self.n] ^ xA
+		self.index = 0
+	
+	def extract_number(self):
+		"""
+		Закалка (на основе MT[index])
+		Необработанные последовательности, генерируемые рекурсией, обладают плохим равномерным распределением на больших
+		размерностях. Чтобы это исправить, используется метод закалки (англ. tempering), на выходе которого получается
+		итоговая псевдослучайная последовательность. Метод заключается в том, что каждое сгенерированное слово
+		умножается справа на специальную обратимую матрицу T размера w × w.
+		Каждые n чисел вызывается twist
+		"""
+		if self.index >= self.n:
+			self.twist()
+		# Шаг 4. Вычисление x[i]T
+		y = self.MT[self.index]
+		y = y ^ ((y >> self.u) & 0xFFFFFFFF)
+		y = y ^ ((y << self.s) & self.b)
+		y = y ^ ((y << self.t) & self.c)
+		y = y ^ (y >> self.l)
+		
+		self.index += 1
+		return y & 0xffffffff
+		
+	def random(self):
+		""" Равномерное распределение [0,1) """
+		return self.extract_number() / 4294967296  # 2^w
+		
+	def randint(self, a, b):
+		""" Случайное целое на отрезке [a,b) """
+		n = self.random()
+		return int(n / (1 / (b-a)) + a)
 \end{lstlisting}
 
 \end{document}

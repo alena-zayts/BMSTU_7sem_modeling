@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.9.4)  7 NOV 2022 14:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.9.4)  8 NOV 2022 16:55
 entering extended mode
 **./main.tex
 (main.tex
@@ -1237,27 +1237,27 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 (title.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Info: Redefining \th on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
+LaTeX Font Info:    ... okay on input line 57.
+LaTeX Info: Redefining \th on input line 57.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1333,7 +1333,7 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-Package hyperref Info: Link coloring ON on input line 55.
+Package hyperref Info: Link coloring ON on input line 57.
 
 (C:\Program Files\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -1347,9 +1347,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count347
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
-LaTeX Info: Redefining \nameref on input line 55.
+LaTeX Info: Redefining \ref on input line 57.
+LaTeX Info: Redefining \pageref on input line 57.
+LaTeX Info: Redefining \nameref on input line 57.
  (main.out) (main.out)
 \@outlinefile=\write5
 \openout5 = `main.out'.
@@ -1360,7 +1360,7 @@ LaTeX Info: Redefining \nameref on input line 55.
 Package todonotes Warning: The length marginparwidth is less than 2cm and will 
 most likely cause issues with the appearance of inserted todonotes. The issue c
 an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
-loading the todonotes package. on input line 55.
+loading the todonotes package. on input line 57.
 
 \openout2 = `title.aux'.
 
@@ -1400,7 +1400,7 @@ Package geometry Warning: `pdftex': not available in `\newgeometry'; skipped.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<pictures/b_logo.jpg, id=38, 57.816pt x 65.3715pt>
+<pictures/b_logo.jpg, id=34, 57.816pt x 65.3715pt>
 File: pictures/b_logo.jpg Graphic file (type jpg)
 <use pictures/b_logo.jpg>
 Package pdftex.def Info: pictures/b_logo.jpg  used on input line 5.
@@ -1519,91 +1519,80 @@ go.jpg>]) [2
 
 
 ] [3] [4]
-Overfull \hbox (12.04814pt too wide) in paragraph at lines 144--151
- [][] 
+Overfull \hbox (1.31877pt too wide) in paragraph at lines 166--167
+\T2A/cmr/m/n/14.4 то-да-ми ге-не-ри-ру-ют-ся по-сле-до-ва-тель-но-сти из 100000
+ псев-до-слу-чай-ных одно-
  []
 
 [5]
-<pictures/1.png, id=75, 1058.66946pt x 555.36053pt>
-File: pictures/1.png Graphic file (type png)
-<use pictures/1.png>
-Package pdftex.def Info: pictures/1.png  used on input line 168.
-(pdftex.def)             Requested size: 476.39685pt x 249.90993pt.
-
-Overfull \hbox (6.92636pt too wide) in paragraph at lines 168--169
- [] 
- []
-
-[6 <./pictures/1.png>]
-<pictures/2.png, id=86, 1082.32928pt x 554.07pt>
-File: pictures/2.png Graphic file (type png)
-<use pictures/2.png>
-Package pdftex.def Info: pictures/2.png  used on input line 200.
-(pdftex.def)             Requested size: 487.04369pt x 249.3292pt.
-
-Overfull \hbox (17.5732pt too wide) in paragraph at lines 200--201
- [] 
- []
-
-[7 <./pictures/2.png>]
-<pictures/3.png, id=95, 1101.25714pt x 553.20964pt>
-File: pictures/3.png Graphic file (type png)
-<use pictures/3.png>
-Package pdftex.def Info: pictures/3.png  used on input line 211.
-(pdftex.def)             Requested size: 495.56114pt x 248.94203pt.
-
-Overfull \hbox (26.09065pt too wide) in paragraph at lines 211--212
- [] 
- []
-
-[8 <./pictures/3.png>]
-<pictures/4.png, id=103, 1101.25714pt x 554.50018pt>
-File: pictures/4.png Graphic file (type png)
-<use pictures/4.png>
-Package pdftex.def Info: pictures/4.png  used on input line 221.
-(pdftex.def)             Requested size: 495.56114pt x 249.52277pt.
-
-Overfull \hbox (26.09065pt too wide) in paragraph at lines 221--222
- [] 
- []
-
+<pictures/res_table.png, id=77, 501.15804pt x 268.43143pt>
+File: pictures/res_table.png Graphic file (type png)
+<use pictures/res_table.png>
+Package pdftex.def Info: pictures/res_table.png  used on input line 172.
+(pdftex.def)             Requested size: 225.51903pt x 120.79301pt.
+<pictures/res_alg.png, id=79, 506.32018pt x 267.1409pt>
+File: pictures/res_alg.png Graphic file (type png)
+<use pictures/res_alg.png>
+Package pdftex.def Info: pictures/res_alg.png  used on input line 180.
+(pdftex.def)             Requested size: 227.84196pt x 120.21228pt.
+ [6 <./pictures/res_table.png> <./pictures/res_alg.png>]
+<pictures/res_limit.png, id=87, 432.75964pt x 337.26pt>
+File: pictures/res_limit.png Graphic file (type png)
+<use pictures/res_limit.png>
+Package pdftex.def Info: pictures/res_limit.png  used on input line 190.
+(pdftex.def)             Requested size: 194.74004pt x 151.7656pt.
+ [7 <./pictures/res_limit.png>]
+<pictures/res_user.png, id=96, 332.52803pt x 106.68428pt>
+File: pictures/res_user.png Graphic file (type png)
+<use pictures/res_user.png>
+Package pdftex.def Info: pictures/res_user.png  used on input line 201.
+(pdftex.def)             Requested size: 149.63622pt x 48.00748pt.
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 233.
+nput line 212.
 LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 
-233.
+212.
+
 (C:\Users\alena\AppData\Roaming\MiKTeX\tex/latex/cyrillic\t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 234.
- [9 <./pictures/4.png>] [10] [11] [12] (main.aux (title.aux))
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 225.
+ [8 <./pictures/res_user.png>] [9] [10] [11] [12] [13]
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
+416.
+
+(C:\Program Files\MiKTeX\tex/latex/base\ts1cmtt.fd
+File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+) [14] (main.aux (title.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 95DC454A62358C6D81DC35DC80A98E65;1520.
+(rerunfilecheck)             Checksum: A63665293658D3DE4592DD5F7F335E43;1927.
  ) 
 Here is how much of TeX's memory you used:
- 39914 strings out of 478864
- 874988 string characters out of 2858518
- 1771108 words of memory out of 10000000
- 56974 multiletter control sequences out of 15000+600000
- 420949 words of font info for 78 fonts, out of 8000000 for 9000
+ 40187 strings out of 478864
+ 878713 string characters out of 2858518
+ 1830108 words of memory out of 10000000
+ 57128 multiletter control sequences out of 15000+600000
+ 422393 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 125i,8n,145p,997b,1268s stack positions out of 5000i,500n,10000p,200000b,80000s
- <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\latt10
-00.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\la
-rm0800.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi60
-0\larm1440.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/d
-pi600\labx1440.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t
-2a/dpi600\labx2074.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/
-lh-t2a/dpi600\larm1200.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour
-/lh/lh-t2a/dpi600\labx1200.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfo
-nts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi1
-0.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Pr
-ogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (12 pages, 2214776 bytes).
+ 125i,9n,145p,1074b,1273s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt
+1000.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\
+latt1000.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi
+600\larm0800.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/
+ec/dpi600\tcrm1440.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/
+lh-t2a/dpi600\larm1440.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour
+/lh/lh-t2a/dpi600\labx1440.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/lj
+four/lh/lh-t2a/dpi600\labx2074.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/p
+k/ljfour/lh/lh-t2a/dpi600\larm1200.pk> <C:\Users\alena\AppData\Local\MiKTeX\fon
+ts/pk/ljfour/lh/lh-t2a/dpi600\labx1200.pk><C:/Program Files/MiKTeX/fonts/type1/
+public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi1
+2.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pro
+gram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/Mi
+KTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (14 pages, 442756 bytes).
 PDF statistics:
- 633 PDF objects out of 1000 (max. 8388607)
- 139 named destinations out of 1000 (max. 500000)
- 102 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 832 PDF objects out of 1000 (max. 8388607)
+ 252 named destinations out of 1000 (max. 500000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
 
