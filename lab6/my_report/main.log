@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.9.4)  6 DEC 2022 16:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.9.4)  6 DEC 2022 17:29
 entering extended mode
 **./main.tex
 (main.tex
@@ -1514,13 +1514,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--31
 
 
 {C:/Users/alena/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./pictures/b_lo
-go.jpg>])
-Overfull \hbox (3.90096pt too wide) in paragraph at lines 71--72
-\T2A/cmr/m/n/14.4 ту, рас-пре-де-лен-но по за-ко-ну ѕуас-со-на с па-ра-мет-ром 
-$[] \OT1/cmr/m/n/14.4 =
- []
-
-[2
+go.jpg>]) [2
 
 
 
@@ -1531,75 +1525,60 @@ Overfull \hbox (6.62547pt too wide) in paragraph at lines 92--93
  []
 
 
-Overfull \hbox (0.6026pt too wide) in paragraph at lines 106--107
+Overfull \hbox (0.6026pt too wide) in paragraph at lines 104--105
 []\T2A/cmr/m/n/14.4 –ежим нор-маль-но-го об-слу-жи-ва-ни€: кли-ент по-лу-ча-ет 
 тре-бу-е-мую услу-
  []
 
-[3]
-<pictures/2-1.pdf, id=47, 721.73637pt x 192.72pt>
+[3] [4]
+<pictures/2-1.pdf, id=58, 721.73637pt x 192.72pt>
 File: pictures/2-1.pdf Graphic file (type pdf)
 <use pictures/2-1.pdf>
-Package pdftex.def Info: pictures/2-1.pdf  used on input line 138.
-(pdftex.def)             Requested size: 577.38988pt x 154.1762pt.
+Package pdftex.def Info: pictures/2-1.pdf  used on input line 136.
+(pdftex.def)             Requested size: 505.212pt x 134.90306pt.
 
-Overfull \hbox (107.91939pt too wide) in paragraph at lines 138--139
+Overfull \hbox (35.74152pt too wide) in paragraph at lines 136--137
  [] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<pictures/2-2.pdf, id=49, 664.40218pt x 210.7875pt>
+<pictures/2-2.pdf, id=60, 664.40218pt x 210.7875pt>
 File: pictures/2-2.pdf Graphic file (type pdf)
 <use pictures/2-2.pdf>
-Package pdftex.def Info: pictures/2-2.pdf  used on input line 148.
-(pdftex.def)             Requested size: 531.52246pt x 168.63022pt.
-
-Overfull \hbox (62.05197pt too wide) in paragraph at lines 148--149
- [] 
- []
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4]
-<pictures/res.png, id=64, 1007.04803pt x 166.04893pt>
+Package pdftex.def Info: pictures/2-2.pdf  used on input line 146.
+(pdftex.def)             Requested size: 465.07835pt x 147.55025pt.
+<pictures/res.png, id=62, 935.6384pt x 175.94304pt>
 File: pictures/res.png Graphic file (type png)
 <use pictures/res.png>
-Package pdftex.def Info: pictures/res.png  used on input line 160.
-(pdftex.def)             Requested size: 553.87813pt x 91.3272pt.
-
-Overfull \hbox (84.40764pt too wide) in paragraph at lines 160--161
- [] 
- []
-
+Package pdftex.def Info: pictures/res.png  used on input line 158.
+(pdftex.def)             Requested size: 467.81805pt x 87.9713pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[5 <./pictures/2-1.pdf> <./pictures/2-2.pdf>]
+[5
+
+ <./pictures/2-1.pdf> <./pictures/2-2.pdf>]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 172.
+nput line 170.
 LaTeX Font Info:    Trying to load font information for T2A+cmtt on input line 
-172.
+170.
 
 (C:\Users\alena\AppData\Roaming\MiKTeX\tex/latex/cyrillic\t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 196.
- [6 <./pictures/res.png>] [7] [8] [9] [10] [11] (main.aux (title.aux))
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 181.
+ [6 <./pictures/res.png>] [7] [8] [9] [10] [11] [12] (main.aux (title.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: CF49ED95212E398EF33FF9EFBD393ED5;700.
  ) 
 Here is how much of TeX's memory you used:
- 40026 strings out of 478864
- 876807 string characters out of 2858518
- 1772108 words of memory out of 10000000
- 57010 multiletter control sequences out of 15000+600000
+ 40120 strings out of 478864
+ 878454 string characters out of 2858518
+ 1749108 words of memory out of 10000000
+ 57068 multiletter control sequences out of 15000+600000
  424718 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 125i,8n,145p,876b,1269s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 125i,8n,145p,1025b,1269s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\latt10
 00.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi600\la
 rm0800.pk> <C:\Users\alena\AppData\Local\MiKTeX\fonts/pk/ljfour/lh/lh-t2a/dpi60
@@ -1614,9 +1593,9 @@ onts/pk/ljfour/lh/lh-t2a/dpi600\labx1200.pk><C:/Program Files/MiKTeX/fonts/type
 1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr1
 2.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (11 pages, 332524 bytes).
+Output written on main.pdf (12 pages, 344630 bytes).
 PDF statistics:
- 743 PDF objects out of 1000 (max. 8388607)
- 211 named destinations out of 1000 (max. 500000)
+ 782 PDF objects out of 1000 (max. 8388607)
+ 247 named destinations out of 1000 (max. 500000)
  65 words of extra memory for PDF output out of 10000 (max. 10000000)
 

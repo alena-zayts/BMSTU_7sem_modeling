@@ -194,6 +194,7 @@ def simulate(requests=10000, requests_lambda=1, n_washers=5, washing_p=0.1, park
 
         operator_paying.update_time()
 
+    print(washing_generated, parking_generated, washing_rejected, parking_rejected, modeling_time, max_paying_len)
     return washing_generated, parking_generated, washing_rejected, parking_rejected, modeling_time, max_paying_len
 
 def add_row(table, name, washing_generated, parking_generated, washing_rejected, parking_rejected, modeling_time,
@@ -209,7 +210,7 @@ def add_row(table, name, washing_generated, parking_generated, washing_rejected,
 def main():
     res_table = PrettyTable()
     res_table.field_names = ['Случай', 'Им. время модел.',
-                             'Количество клиентов', '% обратившихся за автомойкой',
+                             'Кол-во клиентов', '% обр. за автомойкой',
                              '% отказа от парковки', '% отказа от автомойки', 'max очередь на оплату']
 
     add_row(res_table, 'Исходный', *simulate())
@@ -217,6 +218,7 @@ def main():
     add_row(res_table, 'n_washers=7', *simulate(n_washers=7))
     add_row(res_table, 'washing_p=0.3', *simulate(washing_p=0.3))
     add_row(res_table, 'parking_spaces=100', *simulate(parking_spaces=100))
+    add_row(res_table, 'parking_spaces=500', *simulate(parking_spaces=500))
     add_row(res_table, 'requests=50000', *simulate(requests=50000))
 
     print(res_table)

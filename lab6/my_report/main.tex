@@ -68,11 +68,11 @@
 	\item количество мест на парковке $\textit{parking\_spaces}=50$;
 	\item количество мест для автомойки $\textit{n\_washers}=5$;
 	
-	\item количество клиентов, которые приезжают на парковку каждую минуту, распределенно по закону Пуассона с параметром $\textit{requests\_lambda}=3$;
-	\item вероятность того, что владелец обратится за услугой мойки автомобиля $\textit{washing\_py}=0.1$;
-	\item клиент встает в очередь либо к оператору автомойки, либо к оператору парковки, в зависимости от того, требуется ему услуга мойки или нет;
+	\item количество новых клиентов, которые приезжают на парковку каждую минуту, распределенно по закону Пуассона с параметром \\$\textit{requests\_lambda}=3$;
+	\item вероятность того, что владелец обратится за услугой мойки автомобиля $\textit{washing\_p}=0.1$;
+	\item клиент, в зависимости от того, требуется ему услуга мойки или нет, встает в очередь либо к оператору автомойки, либо к оператору парковки;
 
-	\item если клиент встал в очередь к оператору парковки, и длина этой очереди больше $\textit{max\_operator\_parking\_len}=30$, то клиент расстраивается и уезжает, иначе ожидает в очереди;
+	\item если клиент встал в очередь к оператору парковки, а длина этой очереди больше $\textit{max\_operator\_parking\_len}=30$, то клиент расстраивается и уезжает, иначе ожидает в очереди;
 	\item оператор парковки может начать печатать талон для текущего клиента, только если на парковке есть свободное место, оператор парковки обрабатывает одного клиента за $2\pm1$ минуту;
 	
 	\item если клиент встал в очередь к оператору мойки, и длина этой очереди больше $\textit{max\_operator\_washing\_len}=5$, то клиент расстраивается и уезжает, иначе ожидает в очереди;
@@ -89,9 +89,7 @@
 
 За единицу имитационного времени принять 0.01 минуты.
 
-Промоделировать процесс обработки 10000 клиентов. Определить имитационное время моделирования; процент клиентов, которым потребовалась услуга автомойки; проценты клиентов, которые отказались от услуг парковки и автомойки; максимальную очередь на оплату.
-
-Также провести моделирование при изменении отдельных параметров модели.
+Промоделировать процесс обработки 10000 клиентов. Определить имитационное время моделирования; процент клиентов, которым потребовалась услуга автомойки; проценты клиентов, которые отказались от услуг парковки и автомойки; максимальную длину очереди на оплату. Также провести моделирование при изменении отдельных параметров модели.
 
 Построить структурную схему модели, а также схему модели в терминах систем массового обслуживания (СМО).
 
@@ -116,26 +114,26 @@
 \begin{itemize}
 	\item процент клиентов, которым потребовалась услуга автомойки:
 	\begin{equation}
-		w = \frac{w_0 + w_1}{p_0 + p_1 + w_0 + w_1};
+		w = \frac{w_0 + w_1}{p_0 + p_1 + w_0 + w_1} \cdot 100\%;
 	\end{equation}
 
-	\item процент клиентов, которые отказались от услуг парковки:
+	\item процент клиентов, которые отказались от услуги парковки:
 \begin{equation}
-	p_{\textit{p}} = \frac{p_1}{p_0 + p_1};
+	p_{\textit{p}} = \frac{p_1}{p_0 + p_1} \cdot 100\%;
 \end{equation}
 
-	\item процент клиентов, которые отказались от услуг автомойки:
+	\item процент клиентов, которые отказались от услуги автомойки:
 \begin{equation}
-	p_{\textit{w}} = \frac{w_1}{w_0 + w_1};
+	p_{\textit{w}} = \frac{w_1}{w_0 + w_1} \cdot 100\%;
 \end{equation}
 \end{itemize}
 
 
-
+\clearpage
 Структурная схема модели приведена на рисунке~\ref{pic:01}.
 \begin{figure}[h]
 	\begin{center}
-		{\includegraphics[scale=0.8]{pictures/2-1.pdf}
+		{\includegraphics[scale=0.7]{pictures/2-1.pdf}
 			\caption{Структурная схема модели}
 			\label{pic:01}}
 	\end{center}
@@ -145,19 +143,19 @@
 Схема модели в терминах СМО приведена на рисунке~\ref{pic:02}.
 \begin{figure}[h]
 	\begin{center}
-		{\includegraphics[scale=0.8]{pictures/2-2.pdf}
+		{\includegraphics[scale=0.7]{pictures/2-2.pdf}
 			\caption{Схема модели в терминах СМО}
 			\label{pic:02}}
 	\end{center}
 \end{figure}
 
 \section{Результаты работы программы}
-TODO
-Для исследования разработанная программа была протестирована при различном числе генерируемых заявок, различных временах генерации заявок, различных временах работы операторов и компьютеров. На рисунке \ref{pic:res} приведена таблица, где описаны параметры и результаты моделирования. В каждом случае изменялось не более одного (указанного в таблице) параметра, остальные сохранялись из условия. Сгенерированные псевдослучайные числа во всех случаях одинаковы. 
+
+Для исследования разработанная программа была протестирована при различных: количестве генерируемых клиентов; параметре $\lambda$ распределения Пуассона, по которому распределено количество новых клиентов в минуту; количестве мест для мойки автомобиля; вероятности того, что клиент обратится за услугой автомойки; количестве мест на парковке. На рисунке \ref{pic:res} приведена таблица, где описаны параметры и результаты моделирования. В каждом случае изменялось не более одного (указанного в таблице) параметра, остальные сохранялись из условия. 
 
 \begin{figure}[h]
 	\begin{center}
-		{\includegraphics[scale=0.55]{pictures/res.png}
+		{\includegraphics[scale=0.5]{pictures/res.png}
 			\caption{Таблица с результатами исследования программы}
 			\label{pic:res}}
 	\end{center}
@@ -173,27 +171,14 @@ TODO
 from typing import *
 from prettytable import PrettyTable
 from random import random, seed
-seed(0)
+from scipy.stats import poisson
+from numpy.random import normal
+seed(1)
 
-REQUESTS_TO_GENERATE = 300
 MOD_TIME_STEP = 0.01
 
-CLIENT_TIMES = [8, 12]
-O1_TIMES = [15, 25]
-O2_TIMES = [30, 50]
-O3_TIMES = [20, 60]
-C1_TIME = 15
-C2_TIME = 30
 
-ACCUMULATORS = [0, 0]
-O1_ACCUM_INDEX = 0
-O2_ACCUM_INDEX = 0
-O3_ACCUM_INDEX = 1
-C1_ACCUM_INDEX = 0
-C2_ACCUM_INDEX = 1
-
-
-class DistributedTimeGenerator:
+class UniformlyDistributedTimeGenerator:
 	def __init__(self, a: float, b: float):
 		self.a = a
 		self.b = b
@@ -202,157 +187,205 @@ class DistributedTimeGenerator:
 		return self.a + (self.b - self.a) * random()
 
 
+class NormallyDistributedTimeGenerator:
+	def __init__(self, m: float, sigma: float):
+		self.m = m
+		self.sigma = sigma
+	
+	def generate(self):
+		return normal(self.m, self.sigma)
+
+
+class PoissonDistributedTimeGenerator:
+	def __init__(self, lambda_value: int):
+		self.lambda_value = lambda_value
+	
+	def generate(self):
+		return poisson.rvs(self.lambda_value, size=1)[0]
+
+
+class Request:
+	def __init__(self, washing_p):
+		self.need_wash = random() < washing_p
+
+
 class RequestsGenerator:
-	def __init__(self, time_generator: DistributedTimeGenerator):
-		self.time_generator = time_generator
+	def __init__(self, time_generator, washing_p):
 		self.remaining_time = 0
+		self.time_generator = time_generator
+		self.washing_p = washing_p
 	
 	def update_time_and_check_for_request(self):
 		if self.remaining_time > 0:
 			self.remaining_time -= MOD_TIME_STEP
-			return False
+			return None
 		else:
-			self.remaining_time = self.time_generator.generate()
-			return True
+			t = self.time_generator.generate()
+			if t == 0:
+				self.remaining_time = 1
+			else:
+				self.remaining_time = 1 / t
+			return Request(self.washing_p)
 
 
-class Operator:
-	def __init__(self, accum_index: int, time_generator: DistributedTimeGenerator):
-		self.accum_index = accum_index
+class OnePlaceChannel:
+	def __init__(self, accum_in: List, accum_out: List, time_generator, max_out_accum=None):
+		self.accum_in = accum_in
+		self.accum_out = accum_out
 		self.time_generator = time_generator
+		self.max_out_accum = max_out_accum
 		
 		self.is_busy = False
 		self.remaining_time = 0
+		self.processed_count = 0
 	
 	def update_time(self):
-		self.remaining_time -= MOD_TIME_STEP
-		
-		if self.is_busy and self.remaining_time <= 0:
-			self.is_busy = False
-			ACCUMULATORS[self.accum_index] += 1
+		processed = False
+		if self.max_out_accum is None or len(self.accum_out) < self.max_out_accum:
+			if self.is_busy:
+				self.remaining_time -= MOD_TIME_STEP
+				
+				if self.remaining_time <= 0:
+					self.processed_count += 1
+					self.is_busy = False
+					self.accum_out.append(0)
+					processed = True
+			
+			if not self.is_busy:
+				if len(self.accum_in) > 0:
+					self.accum_in.pop(0)
+					self.is_busy = True
+					self.remaining_time = self.time_generator.generate()
+		return processed
+
+
+class SimultaneousChannel:
+	def __init__(self, accum_out, time_generator):
+		self.accum_in = []
+		self.accum_out = accum_out
+		self.time_generator = time_generator
+		self.processed_count = 0
 	
 	def start_process_new_request(self):
-		self.is_busy = True
-		self.remaining_time = self.time_generator.generate()
-
-
-class Computer:
-	def __init__(self, accum_index: int, processing_time: int):
-		self.accum_index = accum_index
-		self.processing_time = processing_time
-		self.is_busy = False
-		self.remaining_time = 0
+		self.accum_in.append(self.time_generator.generate())
 	
-	def update_time_and_check_for_finished_processing(self):
-		self.remaining_time -= MOD_TIME_STEP
+	def update_time(self):
+		left_times = []
+		finished_count = 0
+		for time in self.accum_in:
+			time -= MOD_TIME_STEP
+			if time > 0:
+				left_times.append(time)
+			else:
+				finished_count += 1
+				self.accum_out.append(0)
+		self.accum_in = left_times
+		self.processed_count += finished_count
 		
-		if self.is_busy:
-			if self.remaining_time <= 0:
-				self.is_busy = False
-				return True
-		else:
-			if ACCUMULATORS[self.accum_index] > 0:
-				ACCUMULATORS[self.accum_index] -= 1
-				self.is_busy = True
-				self.remaining_time = self.processing_time
+		return finished_count
+
+
+def simulate(requests=10000, requests_lambda=1, n_washers=5, washing_p=0.1, parking_spaces=50):
+	washing_times = (40, 80)
+	tc_m = 150
+	tc_sigma = 10
+	
+	operator_parking_times = [1, 3]
+	operator_washing_times = [1, 3]
+	operator_paying_times = [2, 4]
+	
+	max_operator_parking_len = 30
+	max_operator_washing_len = 5
+	
+	operator_parking_accum = []
+	operator_washing_accum = []
+	washing_accum = []
+	parking_accum = []
+	paying_accum = []
+	processed_accum = []
+	
+	requests_generator = RequestsGenerator(PoissonDistributedTimeGenerator(lambda_value=requests_lambda), washing_p)
+	operator_parking = OnePlaceChannel(operator_parking_accum, parking_accum,
+	UniformlyDistributedTimeGenerator(*operator_parking_times), max_out_accum=parking_spaces)
+	operator_washing = OnePlaceChannel(operator_washing_accum, parking_accum,
+	UniformlyDistributedTimeGenerator(*operator_washing_times), max_out_accum=parking_spaces)
+	tc = SimultaneousChannel(paying_accum, NormallyDistributedTimeGenerator(tc_m, tc_sigma))
+	washers = [OnePlaceChannel(washing_accum, paying_accum,
+	UniformlyDistributedTimeGenerator(*washing_times)) for _ in range(n_washers)]
+	operator_paying = OnePlaceChannel(paying_accum, processed_accum,
+	UniformlyDistributedTimeGenerator(*operator_paying_times))
+	
+	washing_generated, parking_generated, washing_rejected, parking_rejected, modeling_time, max_paying_len = 0, 0, 0, 0, 0, 0
+	
+	while len(processed_accum) < requests:
+		if len(paying_accum) > max_paying_len:
+			max_paying_len = len(paying_accum)
 		
-		return False
-
-
-def find_free_operator(operators):
-	for i in range(len(operators)):
-		if not operators[i].is_busy:
-			return i
-
-
-def simulate():
-	requests_generator = RequestsGenerator(DistributedTimeGenerator(*CLIENT_TIMES))
-	
-	operators = [
-	Operator(O1_ACCUM_INDEX, DistributedTimeGenerator(*O1_TIMES)),
-	Operator(O2_ACCUM_INDEX, DistributedTimeGenerator(*O2_TIMES)),
-	Operator(O3_ACCUM_INDEX, DistributedTimeGenerator(*O3_TIMES))
-	]
-	
-	computers = [
-	Computer(C1_ACCUM_INDEX, C1_TIME),
-	Computer(C2_ACCUM_INDEX, C2_TIME)
-	]
-	
-	generated, processed, rejected, modeling_time = 0, 0, 0, 0
-	while processed + rejected < REQUESTS_TO_GENERATE:
+		
 		modeling_time += MOD_TIME_STEP
-		if generated < REQUESTS_TO_GENERATE:
+		if (washing_generated + parking_generated) < requests:
 			request = requests_generator.update_time_and_check_for_request()
-			if request:
-				generated += 1
-				free_operator_index = find_free_operator(operators)
-				if free_operator_index is None:
-					rejected += 1
+			if request is not None:
+				if request.need_wash:
+					washing_generated += 1
+					if len(operator_washing_accum) >= max_operator_washing_len:
+						washing_rejected += 1
+						processed_accum.append(0)
+					else:
+						operator_washing_accum.append(0)
 				else:
-					operators[free_operator_index].start_process_new_request()
+					parking_generated += 1
+					if len(operator_parking_accum) >= max_operator_parking_len:
+						parking_rejected += 1
+						processed_accum.append(0)
+					else:
+						operator_parking_accum.append(0)
 		
-		for operator in operators:
-			operator.update_time()
+		new_visitor_to_tc = operator_parking.update_time()
+		if new_visitor_to_tc:
+			tc.start_process_new_request()
+		visitors_from_tc = tc.update_time()
+		for _ in range(visitors_from_tc):
+			parking_accum.pop(0)
 		
-		for computer in computers:
-			if computer.update_time_and_check_for_finished_processing():
-				processed += 1
+		washing_request = operator_washing.update_time()
+		if washing_request:
+			washing_accum.append(0)
+		
+		for operator in washers:
+			washing_finished = operator.update_time()
+			if washing_finished:
+				parking_accum.pop(0)
+		
+		operator_paying.update_time()
 	
-	return generated, processed, rejected, modeling_time
 
+	return washing_generated, parking_generated, washing_rejected, parking_rejected, modeling_time, max_paying_len
+
+def add_row(table, name, washing_generated, parking_generated, washing_rejected, parking_rejected, modeling_time, max_paying_len):
+	table.add_row([name, round(modeling_time),
+	washing_generated + parking_generated,
+	round(100 * washing_generated / (parking_generated + washing_generated)),
+	round(100 * parking_rejected / (parking_generated + parking_rejected)),
+	round(100 * washing_rejected / (washing_generated + washing_rejected)),
+	max_paying_len
+	])
 
 def main():
-	global REQUESTS_TO_GENERATE
-	global C2_TIME
-	global O1_TIMES
-	global CLIENT_TIMES
-	
 	res_table = PrettyTable()
-	res_table.field_names = ['Случай', 'Имитационное время моделирования', 'Вероятность отказа']
+	res_table.field_names = ['Случай', 'Им. время модел.',
+	'Кол-во клиентов', '% обр. за автомойкой',
+	'% отказа от парковки', '% отказа от автомойки', 'max очередь на оплату']
 	
-	seed(0)
-	generated, processed, rejected, modeling_time = simulate()
-	print(generated, processed, rejected, modeling_time)
-	res_table.add_row(['Исходные настройки', modeling_time, round(rejected / generated, 2)])
+	add_row(res_table, 'Исходный', *simulate())
+	add_row(res_table, 'requests_lambda=10', *simulate(requests_lambda=10))
+	add_row(res_table, 'n_washers=7', *simulate(n_washers=7))
+	add_row(res_table, 'washing_p=0.3', *simulate(washing_p=0.3))
+	add_row(res_table, 'parking_spaces=100', *simulate(parking_spaces=100))
+	add_row(res_table, 'requests=50000', *simulate(requests=50000))
 	
-	seed(0)
-	mn = 10
-	tmp = REQUESTS_TO_GENERATE
-	REQUESTS_TO_GENERATE = REQUESTS_TO_GENERATE * mn
-	generated, processed, rejected, modeling_time = simulate()
-	print(generated, processed, rejected, modeling_time)
-	res_table.add_row([f'Количество заявок увеличено в {mn} раза', modeling_time, round(rejected / generated, 2)])
-	REQUESTS_TO_GENERATE = tmp
-	
-	seed(0)
-	mn = 3
-	tmp = C2_TIME
-	C2_TIME = C2_TIME * mn
-	generated, processed, rejected, modeling_time = simulate()
-	print(generated, processed, rejected, modeling_time)
-	res_table.add_row([f'Время 2 компьютера увеличено в {mn} раза', modeling_time, round(rejected / generated, 2)])
-	C2_TIME = tmp
-	
-	seed(0)
-	mn = 3
-	tmp = O1_TIMES
-	O1_TIMES = list(map(lambda time: time * mn, O1_TIMES))
-	generated, processed, rejected, modeling_time = simulate()
-	print(generated, processed, rejected, modeling_time)
-	res_table.add_row([f'Время 1 оператора увеличено в {mn} раза', modeling_time, round(rejected / generated, 2)])
-	O1_TIMES = tmp
-	
-	seed(0)
-	mn = 2
-	tmp = CLIENT_TIMES
-	CLIENT_TIMES = list(map(lambda time: time // mn, CLIENT_TIMES))
-	generated, processed, rejected, modeling_time = simulate()
-	print(generated, processed, rejected, modeling_time)
-	res_table.add_row([f'Время генерации заявок уменьшено в {mn} раза', modeling_time, round(rejected / generated, 2)])
-	CLIENT_TIMES = tmp
-
 	print(res_table)
+
 
 if __name__ == '__main__':
 	main()
